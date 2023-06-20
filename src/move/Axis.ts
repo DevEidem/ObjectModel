@@ -26,6 +26,7 @@ export enum AxisLetter {
 export class Axis extends ModelObject {
     acceleration: number = 0;
     babystep: number = 0;
+    backlash: number = 0;
     current: number = 0;
     readonly drivers: ModelCollection<DriverId> = new ModelCollection(DriverId);
     homed: boolean = false;
@@ -39,6 +40,7 @@ export class Axis extends ModelObject {
     minProbed: boolean = false;
     percentCurrent: number = 100;
     percentStstCurrent: number | null = null;
+    reducedAcceleration: number = 0;
     speed: number = 100;
     stepsPerMm: number = 80;
     userPosition: number | null = null;

@@ -1,10 +1,13 @@
 import ModelObject from "../ModelObject";
 import ModelCollection from "../ModelCollection";
+
 import Axis from "./Axis";
-import MoveCalibration from "./MoveCalibration";
-import MoveCompensation from "./MoveCompensation";
 import Extruder from "./Extruder";
 import InputShaping from "./InputShaping";
+import KeepoutZone from "./KeepoutZone";
+import MoveCalibration from "./MoveCalibration";
+import MoveCompensation from "./MoveCompensation";
+
 import Kinematics, { CoreKinematics, KinematicsName } from "./kinematics";
 
 export class CurrentMove extends ModelObject {
@@ -33,11 +36,13 @@ export class MoveRotation extends ModelObject {
 
 export class Move extends ModelObject {
     readonly axes: ModelCollection<Axis> = new ModelCollection(Axis);
+    backlashFactor: number = 10;
     readonly calibration: MoveCalibration = new MoveCalibration();
     readonly compensation: MoveCompensation = new MoveCompensation();
     readonly currentMove: CurrentMove = new CurrentMove();
     readonly extruders: ModelCollection<Extruder> = new ModelCollection(Extruder);
     readonly idle: MotorsIdleControl = new MotorsIdleControl();
+    readonly keepout: ModelCollection<KeepoutZone | null> = new ModelCollection(KeepoutZone);
     kinematics: Kinematics = new CoreKinematics(KinematicsName.cartesian);
     limitAxes: boolean = true;
     noMovesBeforeHoming: boolean = true;
@@ -54,10 +59,12 @@ export class Move extends ModelObject {
 export default Move
 
 export * from "./kinematics";
+
 export * from "./Axis";
 export * from "./DriverId";
 export * from "./Extruder";
 export * from "./InputShaping";
+export * from "./KeepoutZone";
 export * from "./Microstepping";
 export * from "./MoveCalibration";
 export * from "./MoveCompensation";

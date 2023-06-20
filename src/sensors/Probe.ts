@@ -15,12 +15,15 @@ export enum ProbeType {
 }
 
 export class Probe extends ModelObject {
+    calibA: number | null = null;
+    calibB: number | null = null;
     calibrationTemperature: number = 0;
     deployedByUser: boolean = false;
     disablesHeaters: boolean = false;
-    diveHeight: number = 0;
+    diveHeight: number = 5;
+    isCalibrated: boolean | null = null;
     lastStopHeight: number = 0;
-    maxProbeCount: number = -1;
+    maxProbeCount: number = 1;
     offsets: Array<number> = [0, 0];
     recoveryTime: number = 0;
     speeds: Array<number> = [2, 2];

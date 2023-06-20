@@ -1,5 +1,7 @@
 import ModelObject from "../ModelObject";
 
+import DirectDisplay from "./directDisplay";
+
 export class Accelerometer extends ModelObject {
     points: number = 0;
     runs: number = 0;
@@ -24,11 +26,6 @@ export class MinMaxCurrent extends ModelObject {
     max: number = 0;
 }
 
-export class DirectDisplay extends ModelObject {
-    pulsesPerClick: number = 0;
-    spiFreq: number = 0;
-    typeName: string = "";
-}
 
 export class Board extends ModelObject {
     constructor() {
@@ -66,3 +63,5 @@ export class Board extends ModelObject {
 }
 
 export default Board
+
+export * from "./directDisplay"
